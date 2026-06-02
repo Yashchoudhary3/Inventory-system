@@ -104,37 +104,61 @@ POST /orders
 
 ## Deployment
 
-### Backend (Render / Railway / Fly.io)
+### Frontend Deployment
 
-1. Push `backend/` or the full repo to GitHub.
-2. Create a **PostgreSQL** database on the platform.
-3. Set environment variables:
-   - `DATABASE_URL` — from hosted Postgres
-   - `CORS_ORIGINS` — your Vercel/Netlify URL
-4. Deploy with Dockerfile from `backend/Dockerfile` or:
-   - **Start command:** `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+* Hosted on Vercel
+* URL: https://project-chl5a.vercel.app/
 
-### Docker Hub (backend image)
+### Backend Deployment
+
+* Hosted on Render
+* URL: https://inventory-system-63d7.onrender.com
+* Health Check: https://inventory-system-63d7.onrender.com/health
+* API Documentation: https://inventory-system-63d7.onrender.com/docs
+
+### Database
+
+* PostgreSQL
+* Hosted on Neon
+
+### Docker Image
+
+Docker Hub Repository:
+https://hub.docker.com/r/yashchoudhary1512/inventory
+
+Pull Image:
 
 ```bash
-docker build -t YOUR_DOCKERHUB_USER/inventory-backend:latest ./backend
-docker push YOUR_DOCKERHUB_USER/inventory-backend:latest
+docker pull yashchoudhary1512/inventory:latest
 ```
 
-### Frontend (Vercel / Netlify)
+## Running the Application
 
-1. Set root directory to `frontend`.
-2. Build command: `npm run build`
-3. Output directory: `dist`
-4. Environment variable: `VITE_API_URL=https://your-backend.onrender.com`
-5. Redeploy after backend URL is known.
+### Using Docker Compose (Recommended)
 
-### Post-deployment checklist
+```bash
+docker compose up --build
+```
 
-- [ ] Backend `/health` returns `{"status":"ok"}`
-- [ ] Frontend loads and dashboard shows data
-- [ ] CORS includes frontend URL in `CORS_ORIGINS`
-- [ ] Create product → customer → order flow works
+This starts:
+
+* PostgreSQL database
+* FastAPI backend
+* React frontend
+
+### Running Backend Docker Image Only
+
+```bash
+docker pull yashchoudhary1512/inventory:latest
+```
+
+The standalone backend image requires a valid `DATABASE_URL` environment variable because the application depends on PostgreSQL.
+
+Example:
+
+```bash
+docker run -e DATABASE_URL=<postgres_connection_string> -p 8000:8000 yashchoudhary1512/inventory:latest
+```
 
 ## Project Structure
 
@@ -160,12 +184,23 @@ Inventory/
 └── README.md
 ```
 
-## Submission Checklist
+## Submission Deliverables
 
-- [ ] GitHub repository with frontend + backend
-- [ ] Docker Hub link for backend image
-- [ ] Live frontend URL (Vercel/Netlify)
-- [ ] Live backend API URL (Render/Railway/Fly.io)
+### GitHub Repository
+
+https://github.com/Yashchoudhary3/Inventory-system
+
+### Frontend URL
+
+<PASTE_YOUR_VERCEL_URL>
+
+### Backend API URL
+
+https://inventory-system-63d7.onrender.com
+
+### Docker Hub Image
+
+https://hub.docker.com/r/yashchoudhary1512/inventory
 
 ## License
 
