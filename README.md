@@ -192,7 +192,7 @@ https://github.com/Yashchoudhary3/Inventory-system
 
 ### Frontend URL
 
-<PASTE_YOUR_VERCEL_URL>
+https://project-chl5a.vercel.app/
 
 ### Backend API URL
 
@@ -201,7 +201,3 @@ https://inventory-system-63d7.onrender.com
 ### Docker Hub Image
 
 https://hub.docker.com/r/yashchoudhary1512/inventory
-
-## License
-
-MIT — for technical assessment purposes.

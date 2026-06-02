@@ -1,4 +1,3 @@
-# Optional Render Blueprint — deploy backend + managed Postgres
 services:
   - type: web
     name: inventory-api
